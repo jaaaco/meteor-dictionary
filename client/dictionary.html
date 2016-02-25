@@ -1,0 +1,26 @@
+<template name="Dictionary">
+    <div class="input-group">
+        <input data-collection="{{collection}}" placeholder="{{placeholder}}" data-field="{{field}}" data-id="{{object._id}}" value="{{getValue field}}" type="text" class="editable form-control">
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu" role="menu">
+                {{#each entires}}
+                <li><a class="DictionaryItem" href="#">{{name}}</a></li>
+                {{/each}}
+                {{#unless entiresCount}}
+                    {{#if saveItems}}
+                        <li><a class="text-muted">(wpisz wartość w polu aby dodać wartość do listy)</a></li>
+                    {{else}}
+                        <li><a class="text-muted">(wybierz wartość z listy albo wpisz bez dodawania)</a></li>
+                    {{/if}}
+                {{/unless}}
+                {{#if getValue field}}
+                    {{#if saveItems}}
+                    <li class="divider"></li>
+                    <li><a class="DictionaryItemRemove" data-text="{{getValue field}}" href="#"><span class="fa fa-trash-o"></span> Usuń wpis</a></li>
+                    {{/if}}
+                {{/if}}
+            </ul>
+        </div><!-- /btn-group -->
+    </div><!-- /input-group -->
+</template>
